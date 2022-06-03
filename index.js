@@ -25,8 +25,6 @@ webpush.setVapidDetails(
 
 //using bodyparser
 app.use(bodyParser.json());
-//set the static path
-app.use(express.static(path.join(__dirname, "client")));
 
 // ROUTES
 app.post("/subscribe", (req, res) => {
@@ -45,10 +43,8 @@ app.post("/subscribe", (req, res) => {
     })
     .catch((err) => console.error(err));
 });
-
-app.get("/suscribe", (req, res) => {
-  res.status(200).json("correct info you got there");
-});
+//set the static path
+app.use(express.static(path.join(__dirname, "client")));
 
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname + "/client/index.html"));
