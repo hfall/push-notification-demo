@@ -30,11 +30,11 @@ webpush.setVapidDetails(
 app.use(bodyParser.json());
 
 //set the static path
-app.use(express.static(path.join(__dirname, "client")));
+app.use(express.static(path.join(__dirname, "public")));
 
 // ROUTES
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + "/client/index.html"));
+  res.sendFile(path.join(__dirname + "/public/index.html"));
 });
 app.post("/subscribe", (req, res) => {
   //get push subscription object from the request
@@ -53,7 +53,7 @@ app.post("/subscribe", (req, res) => {
     .catch((err) => console.error(err));
 });
 
-const port = 3000;
+const port = 3000 || process.env.PORT;
 app.listen(port, () => {
   console.log(`server started on ${port}`);
 });
