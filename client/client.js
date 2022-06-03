@@ -24,7 +24,7 @@ async function init() {
 
   sendBtn.addEventListener("click", async () => {
     //Send push notification
-    await fetch("/subscribe", {
+    await fetch("/api/subscribe", {
       method: "POST",
       body: JSON.stringify(subscription),
       headers: {

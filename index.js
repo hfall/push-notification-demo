@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "client")));
 
 // ROUTES
-app.post("/subscribe", (req, res) => {
+app.post("/api/subscribe", (req, res) => {
   //get push subscription object from the request
   const subscription = req.body;
 
@@ -46,7 +46,7 @@ app.post("/subscribe", (req, res) => {
     .catch((err) => console.error(err));
 });
 
-app.get("*", (req, res) => {
+app.get("/api/*", (req, res) => {
   res.sendFile(path.join(__dirname + "/client/index.html"));
 });
 
