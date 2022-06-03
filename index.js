@@ -29,16 +29,13 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "client")));
 
 // ROUTES
-// app.get("/", (req, res) => {
-//   res.sendFile(path.join(__dirname + "/client/index.html"));
-// });
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname + "/client/index.html"));
+});
 
 app.post("/subscribe", (req, res) => {
   //get push subscription object from the request
   const subscription = req.body;
-
-  //send status 201 for the request
-  res.status(201).json({});
 
   //create paylod: specified the detals of the push notification
   const payload = JSON.stringify({ title: "Testing This Push Notification" });
@@ -47,6 +44,9 @@ app.post("/subscribe", (req, res) => {
   webpush
     .sendNotification(subscription, payload)
     .catch((err) => console.error(err));
+
+  //send status 201 for the request
+  res.status(201).sendFile(path.join(__dirname + "/client/index.html"));
 });
 
 const port = 3000;
