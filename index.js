@@ -43,10 +43,11 @@ app.post("/subscribe", (req, res) => {
   //pass the object into sendNotification fucntion and catch any error
   webpush
     .sendNotification(subscription, payload)
+    .then(() => {
+      //send status 201 for the request
+      res.status(201).json({});
+    })
     .catch((err) => console.error(err));
-
-  //send status 201 for the request
-  res.status(201).json({});
 });
 
 const port = 3000;
