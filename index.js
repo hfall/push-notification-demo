@@ -46,7 +46,7 @@ app.post("/subscribe", (req, res) => {
     .catch((err) => console.error(err));
 
   //send status 201 for the request
-  res.status(201).sendFile(path.join(__dirname + "/client/index.html"));
+  res.status(201).json({});
 });
 
 const port = 3000;
