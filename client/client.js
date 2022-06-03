@@ -24,15 +24,13 @@ async function init() {
 
   sendBtn.addEventListener("click", async () => {
     //Send push notification
-    await fetch("/api/subscribe", {
+    await fetch("/subscribe", {
       method: "POST",
       body: JSON.stringify(subscription),
       headers: {
         "content-type": "application/json",
       },
-    })
-      .then((res) => res.json())
-      .then((res) => console.log(JSON.parse(res)));
+    });
   });
 }
 
