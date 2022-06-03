@@ -10,12 +10,15 @@ const bodyParser = require("body-parser");
 //path
 const path = require("path");
 
-const env = require("node-env-file");
+// const env = require("node-env-file");
 
 //using express
 const app = express();
 
-env(__dirname + "/.env");
+if (process.env.NODE_ENV === "development") {
+  require("node-env-file")(__dirname + "/.env");
+}
+console.log(process.env.NODE_ENV);
 
 webpush.setVapidDetails(
   "mailto:hfall@outlook.com",
