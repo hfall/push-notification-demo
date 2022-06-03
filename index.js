@@ -39,9 +39,9 @@ app.post("/api/subscribe", (req, res) => {
   //pass the object into sendNotification fucntion and catch any error
   webpush
     .sendNotification(subscription, payload)
-    .then(() => {
+    .then((data) => {
       //send status 201 for the request
-      res.status(201).json({});
+      res.status(201).json(JSON.stringify(data));
     })
     .catch((err) => console.error(err));
 });

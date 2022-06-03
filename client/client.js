@@ -30,7 +30,9 @@ async function init() {
       headers: {
         "content-type": "application/json",
       },
-    });
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(JSON.parse(res)));
   });
 }
 
