@@ -29,9 +29,9 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "client")));
 
 // ROUTES
-// app.get("/", (req, res) => {
-//   res.sendFile(path.join(__dirname + "/client/index.html"));
-// });
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname + "/client/index.html"));
+});
 
 app.post("/subscribe", (req, res) => {
   //get push subscription object from the request
